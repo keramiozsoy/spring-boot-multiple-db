@@ -1,9 +1,7 @@
-package com.example.multipledb.postgres;
+package com.example.multipledb.postgres.config;
 
 import jakarta.persistence.EntityManagerFactory;
-import org.hibernate.cfg.AvailableSettings;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.boot.autoconfigure.orm.jpa.HibernateProperties;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;

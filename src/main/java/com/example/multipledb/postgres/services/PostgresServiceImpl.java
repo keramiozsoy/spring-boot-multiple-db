@@ -1,4 +1,4 @@
-package com.example.multipledb.postgres;
+package com.example.multipledb.postgres.services;
 
 
 import com.example.multipledb.postgres.entities.PostgresEntity;

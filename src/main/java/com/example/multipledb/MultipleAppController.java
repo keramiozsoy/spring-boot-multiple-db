@@ -1,7 +1,7 @@
 package com.example.multipledb;
 
 import com.example.multipledb.postgres.entities.PostgresEntity;
-import com.example.multipledb.postgres.PostgresServiceImpl;
+import com.example.multipledb.postgres.services.PostgresServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
