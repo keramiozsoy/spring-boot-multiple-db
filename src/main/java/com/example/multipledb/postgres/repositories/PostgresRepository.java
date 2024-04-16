@@ -1,5 +1,6 @@
-package com.example.multipledb.postgres;
+package com.example.multipledb.postgres.repositories;
 
+import com.example.multipledb.postgres.entities.PostgresEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
