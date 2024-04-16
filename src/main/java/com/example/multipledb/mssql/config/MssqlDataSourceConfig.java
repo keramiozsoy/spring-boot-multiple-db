@@ -1,4 +1,4 @@
-package com.example.multipledb.postgres.config;
+package com.example.multipledb.mssql.config;
 
 import jakarta.persistence.EntityManagerFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -16,28 +16,27 @@ import java.util.Properties;
 
 @Configuration
 @EnableJpaRepositories(
-        basePackages = "com.example.multipledb.postgres.repositories",
-        entityManagerFactoryRef = "postgresEntityManagerFactory",
-        transactionManagerRef = "postgresTransactionManager"
+        basePackages = "com.example.multipledb.mssql.repositories",
+        entityManagerFactoryRef = "mssqlEntityManagerFactory",
+        transactionManagerRef = "mssqlTransactionManager"
 )
-public class PostgresDataSourceConfig {
+public class MssqlDataSourceConfig {
 
     @Bean
-    @ConfigurationProperties(prefix = "postgres.datasource")
-    public DataSource postgresDataSource() {
+    @ConfigurationProperties(prefix = "mssql.datasource")
+    public DataSource mssqlDataSource() {
         return DataSourceBuilder.create().build();
     }
 
-
     @Bean
-    public EntityManagerFactory postgresEntityManagerFactory(@Qualifier("postgresDataSource") DataSource dataSource) {
+    public EntityManagerFactory mssqlEntityManagerFactory(@Qualifier("mssqlDataSource") DataSource dataSource) {
         LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
         entityManagerFactoryBean.setDataSource(dataSource);
-        entityManagerFactoryBean.setPackagesToScan("com.example.multipledb.postgres.entities");
+        entityManagerFactoryBean.setPackagesToScan("com.example.multipledb.mssql.entities");
         entityManagerFactoryBean.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
 
         Properties jpaProperties = new Properties();
-        jpaProperties.put("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect");
+        jpaProperties.put("hibernate.dialect", "org.hibernate.dialect.SQLServerDialect");
         jpaProperties.put("hibernate.hbm2ddl.auto", "create-drop");
         entityManagerFactoryBean.setJpaProperties(jpaProperties);
 
@@ -47,8 +46,8 @@ public class PostgresDataSourceConfig {
     }
 
     @Bean
-    public JpaTransactionManager postgresTransactionManager(
-            @Qualifier("postgresEntityManagerFactory") EntityManagerFactory emf) {
+    public JpaTransactionManager mssqlTransactionManager(
+            @Qualifier("mssqlEntityManagerFactory") EntityManagerFactory emf) {
         JpaTransactionManager transactionManager = new JpaTransactionManager();
         transactionManager.setEntityManagerFactory(emf);
         return transactionManager;
