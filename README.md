@@ -2,7 +2,9 @@
 
 An example of how to connect to multiple databases with a Spring Boot application. 
 
-The databases used are: 
+Technologies used are: 
+- springboot
+- java17
 - mssql
 - postgres
 
