@@ -19,13 +19,13 @@ docker run --name=multiple-db-mssql --env=MSSQL_SA_PASSWORD=WQqps58o1rt6DrUpJsw2
 
 
 ## Send Request
-Test insert data to mssql
+Inserts data to MsSQL
 
 ```SHELL
 curl http://localhost:9090/mssql
 ```
 
-Test insert data to postgres
+Inserts data to PostgreSQL
 
 ```SHELL 
 curl http://localhost:9090/postgres
